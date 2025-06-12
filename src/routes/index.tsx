@@ -3,6 +3,7 @@ import { Timeline } from '@/components/ui/timeline';
 import { createFileRoute } from '@tanstack/react-router'
 import { Code, Github, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'motion/react';
+import Skills from '@/components/Skills';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -153,7 +154,6 @@ function RouteComponent() {
     <Projects />
 
     <Timeline data={data} />
-
-    <div className='h-screen w-screen'></div>
+    <Skills />
   </div >
 }
