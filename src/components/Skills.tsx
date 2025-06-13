@@ -1,15 +1,5 @@
 import { cn } from "@/lib/utils";
 import { Server } from "lucide-react";
-// import {
-//   IconAdjustmentsBolt,
-//   IconCloud,
-//   IconCurrencyDollar,
-//   IconEaseInOut,
-//   IconHeart,
-//   IconHelp,
-//   IconRouteAltLeft,
-//   IconTerminal2,
-// } from "@tabler/icons-react";
 
 export default function Skills() {
   const skills = [
@@ -67,10 +57,13 @@ export default function Skills() {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto">
-      {skills.map((skill, index) => (
-        <Skill key={skill.title} {...skill} index={index} />
-      ))}
+    <div className="py-20 ">
+      <h1 className="text-lg md:text-4xl mb-10 text-black dark:text-white max-w-7xl mx-auto">Skills</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10  max-w-7xl mx-auto">
+        {skills.map((skill, index) => (
+          <Skill key={skill.title} {...skill} index={index} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -90,7 +83,7 @@ const Skill = ({
     <div
       className={cn(
         "flex flex-col lg:border-r  py-10 relative group/feature dark:border-neutral-800",
-        (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
+        (index === 0 || index === 4 || index === 8) && "lg:border-l dark:border-neutral-800",
         index < 8 && "lg:border-b dark:border-neutral-800"
       )}
     >

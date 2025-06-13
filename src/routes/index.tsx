@@ -4,6 +4,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Code, Github, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'motion/react';
 import Skills from '@/components/Skills';
+import { InfiniteMovingCardsDemo } from '@/components/Achievement';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -66,94 +67,100 @@ function RouteComponent() {
     },
   ];
 
-  return <div className='flex flex-col min-h-screen w-full items-center pt-20'>
-    <div className='flex flex-col items-center justify-start h-full w-full overflow-hidden relative box-border'>
-      <div className='min-h-[400px] w-full relative flex justify-center' >
-        <motion.div className='h-[85%] w-[270px] absolute bg-linear-to-b/decreasing from-gray-300 dark:from-muted to-background rounded-t-full flex justify-center z-0 bottom-0'
-          initial={{
-            y: -50,
-            opacity: 0,
-          }}
-          whileInView={{
-            y: 0,
-            opacity: 1,
-          }}
-          transition={{
-            duration: 0.4,
-            ease: 'easeIn'
-          }}
-        />
-        <motion.img src="/assets/images/hero.png" alt="hero" className='h-full max-w-full absolute z-1 bottom-0 mr-3 drop-shadow-lg drop-shadow-muted-foreground dark:drop-shadow-none'
-          initial={{
-            y: 50,
-            opacity: 0,
-          }}
+  return (
 
+    <div className='flex flex-col min-h-screen w-full items-center pt-20'>
+      <div className='flex flex-col items-center justify-start h-full w-full overflow-hidden relative box-border'>
+        <div className='min-h-[400px] w-full relative flex justify-center' >
+          <motion.div className='h-[85%] w-[270px] absolute bg-linear-to-b/decreasing from-gray-300 dark:from-muted to-background rounded-t-full flex justify-center z-0 bottom-0'
+            initial={{
+              y: -50,
+              opacity: 0,
+            }}
+            whileInView={{
+              y: 0,
+              opacity: 1,
+            }}
+            transition={{
+              duration: 0.4,
+              ease: 'easeIn'
+            }}
+          />
+          <motion.img src="/assets/images/hero.png" alt="hero" className='h-full max-w-full absolute z-1 bottom-0 mr-3 drop-shadow-lg drop-shadow-muted-foreground dark:drop-shadow-none'
+            initial={{
+              y: 50,
+              opacity: 0,
+            }}
+
+            whileInView={{
+              y: 0,
+              opacity: 1,
+            }}
+            transition={{
+              duration: 0.4,
+              ease: 'easeIn'
+            }}
+          />
+          {/* <div className='bg-muted h-[80%] w-64 right-0 absolute rounded-bl-[50%] rounded-br-[50%]' /> */}
+        </div>
+        <motion.h1 className='text-4xl md:text-6xl font-medium uppercase z-20 text-center'
+          initial={{
+            y: -10,
+          }}
           whileInView={{
             y: 0,
-            opacity: 1,
           }}
           transition={{
             duration: 0.4,
             ease: 'easeIn'
           }}
-        />
-        {/* <div className='bg-muted h-[80%] w-64 right-0 absolute rounded-bl-[50%] rounded-br-[50%]' /> */}
+        >Swaroop Chitturi</motion.h1>
+        <motion.h3 className='md:text-2xl text-xl text-muted-foreground z-20 text-center'
+          initial={{
+            y: -40,
+          }}
+          whileInView={{
+            y: 0,
+          }}
+          transition={{
+            duration: 0.4,
+            ease: 'easeIn'
+          }}
+        >Associate Software Development Engineer</motion.h3>
       </div>
-      <motion.h1 className='text-4xl md:text-6xl font-medium uppercase z-20 text-center'
+
+      <motion.footer className='w-full flex justify-center my-12'
         initial={{
-          y: -10,
+          scale: 0.5,
+          opacity: 0,
+          y: 30,
         }}
         whileInView={{
+          scale: 1,
+          opacity: 1,
           y: 0,
         }}
+
         transition={{
           duration: 0.4,
           ease: 'easeIn'
         }}
-      >Swaroop Chitturi</motion.h1>
-      <motion.h3 className='md:text-2xl text-xl text-muted-foreground z-20 text-center'
-        initial={{
-          y: -40,
-        }}
-        whileInView={{
-          y: 0,
-        }}
-        transition={{
-          duration: 0.4,
-          ease: 'easeIn'
-        }}
-      >Associate Software Development Engineer</motion.h3>
-    </div>
+      >
+        <ul className='grid grid-cols-2 md:grid-cols-4 justify-between max-w-4xl w-full text-sm md:text-xl'>
+          <li><a href="" className='flex gap-3 items-center justify-center font-medium text-muted-foreground'><Mail />Email</a></li>
+          <li><a href="" className='flex gap-3 items-center justify-center font-medium text-muted-foreground'><Github />Github</a></li>
+          <li><a href="" className='flex gap-3 items-center justify-center font-medium text-muted-foreground'><Linkedin />LinkedIn</a></li>
+          <li><a href="" className='flex gap-3 items-center justify-center font-medium text-muted-foreground'><Code />LeetCode</a></li>
+        </ul>
+      </motion.footer>
 
-    <motion.footer className='w-full flex justify-center my-12'
-      initial={{
-        scale: 0.5,
-        opacity: 0,
-        y: 30,
-      }}
-      whileInView={{
-        scale: 1,
-        opacity: 1,
-        y: 0,
-      }}
+      <Projects />
 
-      transition={{
-        duration: 0.4,
-        ease: 'easeIn'
-      }}
-    >
-      <ul className='grid grid-cols-2 md:grid-cols-4 justify-between max-w-4xl w-full text-sm md:text-xl'>
-        <li><a href="" className='flex gap-3 items-center justify-center font-medium text-muted-foreground'><Mail />Email</a></li>
-        <li><a href="" className='flex gap-3 items-center justify-center font-medium text-muted-foreground'><Github />Github</a></li>
-        <li><a href="" className='flex gap-3 items-center justify-center font-medium text-muted-foreground'><Linkedin />LinkedIn</a></li>
-        <li><a href="" className='flex gap-3 items-center justify-center font-medium text-muted-foreground'><Code />LeetCode</a></li>
-      </ul>
-    </motion.footer>
+      <Timeline data={data} />
+      <Skills />
+      <InfiniteMovingCardsDemo />
 
-    <Projects />
-
-    <Timeline data={data} />
-    <Skills />
-  </div >
+    </div >
+  )
 }
+
