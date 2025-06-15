@@ -5,6 +5,7 @@ import { Code, Github, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'motion/react';
 import Skills from '@/components/Skills';
 import { InfiniteMovingCardsDemo } from '@/components/Achievement';
+import About from '@/components/About';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -81,6 +82,7 @@ function RouteComponent() {
               y: 0,
               opacity: 1,
             }}
+            viewport={{ once: true }}
             transition={{
               duration: 0.4,
               ease: 'easeIn'
@@ -96,6 +98,7 @@ function RouteComponent() {
               y: 0,
               opacity: 1,
             }}
+            viewport={{ once: true }}
             transition={{
               duration: 0.4,
               ease: 'easeIn'
@@ -110,6 +113,7 @@ function RouteComponent() {
           whileInView={{
             y: 0,
           }}
+          viewport={{ once: true }}
           transition={{
             duration: 0.4,
             ease: 'easeIn'
@@ -122,6 +126,7 @@ function RouteComponent() {
           whileInView={{
             y: 0,
           }}
+          viewport={{ once: true }}
           transition={{
             duration: 0.4,
             ease: 'easeIn'
@@ -140,7 +145,7 @@ function RouteComponent() {
           opacity: 1,
           y: 0,
         }}
-
+        viewport={{ once: true }}
         transition={{
           duration: 0.4,
           ease: 'easeIn'
@@ -153,6 +158,9 @@ function RouteComponent() {
           <li><a href="" className='flex gap-3 items-center justify-center font-medium text-muted-foreground'><Code />LeetCode</a></li>
         </ul>
       </motion.footer>
+
+
+      <About />
 
       <Projects />
 

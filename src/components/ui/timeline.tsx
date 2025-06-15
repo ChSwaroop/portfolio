@@ -35,6 +35,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     <div
       className="w-full bg-white dark:bg-neutral-950 font-sans md:px-10"
       ref={containerRef}
+      id="experience"
     >
       <motion.div className="max-w-7xl mx-auto pt-20 px-4 md:px-8"
         initial={{
@@ -45,6 +46,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           y: 0,
           opacity: 1,
         }}
+        viewport={{ once: true }}
         transition={{
           duration: 0.6,
         }}
@@ -83,6 +85,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                 x: 0,
                 opacity: 1,
               }}
+              viewport={{ once: true }}
               transition={{
                 duration: 0.6,
                 delay: index * 0.2, // Stagger the animation for each project

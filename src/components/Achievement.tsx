@@ -1,10 +1,11 @@
-// import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react};
 import { motion } from "motion/react";
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 
 export function InfiniteMovingCardsDemo() {
     return (
         <motion.div className="h-[25rem] w-full rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden"
+            id="achievements"
             initial={{
                 y: 50,
                 opacity: 0,
@@ -13,8 +14,11 @@ export function InfiniteMovingCardsDemo() {
                 y: 0,
                 opacity: 1,
             }}
+            viewport={{ once: true }}
             transition={{
                 duration: 0.6,
+                delay: 0.2,
+                type: 'spring',
             }}
         >
             <h1 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-7xl w-full px-4  ">Acheivements</h1>

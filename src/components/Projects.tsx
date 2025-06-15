@@ -30,9 +30,8 @@ const Projects = () => {
     ];
 
     return (
-        <div className='max-w-7xl'>
+        <div className='max-w-7xl' id="projects">
             <motion.h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-7xl px-5"
-
                 initial={{
                     y: 30,
                     opacity: 0,
@@ -41,10 +40,9 @@ const Projects = () => {
                     y: 0,
                     opacity: 1,
                 }}
+                viewport={{ once: true }}
                 transition={{
                     duration: 0.6,
-                    delay: 0.2,
-                    type: 'spring',
                 }}
             >
                 Projects
@@ -67,7 +65,7 @@ const Projects = () => {
                             y: 0,
                             opacity: 1,
                         }}
-                        // viewport={{ once: true, amount: 0.3 }} // Optional for smoother control
+                        viewport={{ once: true }}
                         transition={{
                             duration: 0.6,
                             delay: index * 0.2,
@@ -96,7 +94,7 @@ const Projects = () => {
                             y: 0,
                             opacity: 1,
                         }}
-                        // viewport={{ once: true, amount: 0.3 }} // Optional for smoother control
+                        viewport={{ once: true }}
                         transition={{
                             duration: 0.6,
                             delay: index * 0.2,

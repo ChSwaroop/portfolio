@@ -58,7 +58,7 @@ export default function Skills() {
   ];
 
   return (
-    <div className="py-20 ">
+    <div className="py-20" id="skills">
       <motion.h1 className="text-lg md:text-4xl mb-10 text-black dark:text-white max-w-7xl mx-auto"
         initial={{
           y: 50,
@@ -68,6 +68,7 @@ export default function Skills() {
           y: 0,
           opacity: 1,
         }}
+        viewport={{ once: true }}
         transition={{
           duration: 0.6,
         }}
@@ -107,6 +108,7 @@ const Skill = ({
         y: 0,
         opacity: 1,
       }}
+      viewport={{ once: true }}
       transition={{
         duration: 0.6,
         delay: index * 0.1, // Stagger the animation for each skill
