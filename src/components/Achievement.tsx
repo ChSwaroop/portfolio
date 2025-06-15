@@ -1,16 +1,29 @@
 // import React, { useEffect, useState } from "react";
+import { motion } from "motion/react";
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 
 export function InfiniteMovingCardsDemo() {
     return (
-        <div className="h-[25rem] w-full rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
+        <motion.div className="h-[25rem] w-full rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden"
+            initial={{
+                y: 50,
+                opacity: 0,
+            }}
+            whileInView={{
+                y: 0,
+                opacity: 1,
+            }}
+            transition={{
+                duration: 0.6,
+            }}
+        >
             <h1 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-7xl w-full px-4  ">Acheivements</h1>
             <InfiniteMovingCards
                 items={achievements}
                 direction="right"
                 speed="slow"
             />
-        </div>
+        </motion.div>
     );
 }
 

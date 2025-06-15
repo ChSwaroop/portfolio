@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import { CardBody, CardContainer, CardItem } from './ui/3d-card'
 
 const Projects = () => {
@@ -30,35 +31,76 @@ const Projects = () => {
 
     return (
         <div className='max-w-7xl'>
-            <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-7xl px-5">
+            <motion.h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-7xl px-5"
+
+                initial={{
+                    y: 30,
+                    opacity: 0,
+                }}
+                whileInView={{
+                    y: 0,
+                    opacity: 1,
+                }}
+                transition={{
+                    duration: 0.6,
+                    delay: 0.2,
+                    type: 'spring',
+                }}
+            >
                 Projects
-            </h2>
+            </motion.h2>
 
             {projects.map((project, index) => (
-                <div
+                <motion.div
                     key={index}
                     className="w-full flex flex-wrap md:flex-nowrap justify-center md:justify-start gap-3.5 px-5 items-center"
                 >
                     {/* Description */}
-                    <div
-                        className={`w-full md:w-auto ${index % 2 === 1
-                            ? 'order-2 md:order-1'
-                            : 'order-2 md:order-2'
+                    <motion.div
+                        className={`w-full md:w-auto ${index % 2 === 1 ? 'order-2 md:order-1' : 'order-2 md:order-2'
                             }`}
+                        initial={{
+                            y: 50,
+                            opacity: 0,
+                        }}
+                        whileInView={{
+                            y: 0,
+                            opacity: 1,
+                        }}
+                        // viewport={{ once: true, amount: 0.3 }} // Optional for smoother control
+                        transition={{
+                            duration: 0.6,
+                            delay: index * 0.2,
+                        }}
                     >
                         <ul className="ml-8 list-disc text-sm md:text-lxl lg:text-lg">
                             {project.description.map((des, ind) => (
                                 <li key={ind}>{des}</li>
                             ))}
                         </ul>
-                    </div>
+                    </motion.div>
+
 
                     {/* Card */}
-                    <div
+                    <motion.div
                         className={`w-full md:w-auto ${index % 2 === 1
                             ? 'order-1 md:order-2'
                             : 'order-1 md:order-1'
                             }`}
+
+                        initial={{
+                            y: 50,  // Right slide for even index
+                            opacity: 0,
+                        }}
+                        whileInView={{
+                            y: 0,
+                            opacity: 1,
+                        }}
+                        // viewport={{ once: true, amount: 0.3 }} // Optional for smoother control
+                        transition={{
+                            duration: 0.6,
+                            delay: index * 0.2,
+                        }}
                     >
                         <CardContainer className="inter-var place-content-start">
                             <CardBody className="bg-gray-50 group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] md:max-w-[60vh] lg:max-w-full h-auto rounded-2xl p-6 border">
@@ -100,8 +142,8 @@ const Projects = () => {
                                 </div>
                             </CardBody>
                         </CardContainer>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             ))}
         </div>
 

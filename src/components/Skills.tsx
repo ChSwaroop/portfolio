@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Server } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function Skills() {
   const skills = [
@@ -58,7 +59,19 @@ export default function Skills() {
 
   return (
     <div className="py-20 ">
-      <h1 className="text-lg md:text-4xl mb-10 text-black dark:text-white max-w-7xl mx-auto">Skills</h1>
+      <motion.h1 className="text-lg md:text-4xl mb-10 text-black dark:text-white max-w-7xl mx-auto"
+        initial={{
+          y: 50,
+          opacity: 0,
+        }}
+        whileInView={{
+          y: 0,
+          opacity: 1,
+        }}
+        transition={{
+          duration: 0.6,
+        }}
+      >Skills</motion.h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10  max-w-7xl mx-auto">
         {skills.map((skill, index) => (
           <Skill key={skill.title} {...skill} index={index} />
@@ -80,12 +93,24 @@ const Skill = ({
   index: number;
 }) => {
   return (
-    <div
+    <motion.div
       className={cn(
         "flex flex-col lg:border-r  py-10 relative group/feature dark:border-neutral-800",
         (index === 0 || index === 4 || index === 8) && "lg:border-l dark:border-neutral-800",
         index < 8 && "lg:border-b dark:border-neutral-800"
       )}
+      initial={{
+        y: 50,
+        opacity: 0,
+      }}
+      whileInView={{
+        y: 0,
+        opacity: 1,
+      }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1, // Stagger the animation for each skill
+      }}
     >
       {index < 4 && (
         <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
@@ -105,6 +130,6 @@ const Skill = ({
       <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10">
         {description}
       </p>
-    </div>
+    </motion.div>
   );
 };
