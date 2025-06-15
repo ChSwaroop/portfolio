@@ -59,7 +59,7 @@ export default function Skills() {
 
   return (
     <div className="py-20" id="skills">
-      <motion.h1 className="text-lg md:text-4xl mb-10 text-black dark:text-white max-w-7xl mx-auto"
+      <motion.h1 className="text-lg md:text-4xl mb-10 text-black dark:text-white max-w-7xl mx-auto px-5"
         initial={{
           y: 50,
           opacity: 0,

@@ -37,28 +37,28 @@ const achievements = [
             "Won 1st place in the college-wide Appathon competition by building a fully functional productivity app using Flutter and Firebase.",
         platform: "College Event",
         category: "Appathon Winner",
-        logo: "/logos/college.svg",
+        logo: "assets/logos/college.jpg",
     },
     {
         quote:
             "Achieved 5-star rating in Problem Solving on HackerRank by consistently solving algorithmic challenges and participating in weekly contests.",
         platform: "HackerRank",
         category: "Problem Solving",
-        logo: "/logos/hackerrank.svg",
+        logo: "/assets/logos/hackerrank.png",
     },
     {
         quote:
             "Earned 2-star coder rating on CodeChef by solving time-constrained competitive programming problems under real contest environments.",
         platform: "CodeChef",
         category: "Competitive Programming",
-        logo: "/logos/codechef.svg",
+        logo: "assets/logos/codechef.jpg",
     },
     {
         quote:
             "Secured 6th rank in ECET-2022 (Engineering Common Entrance Test), a state-level competitive exam in Andhra Pradesh for diploma and B.Sc. students seeking lateral entry into engineering programs, demonstrating academic excellence and technical proficiency.",
         platform: "ECET - Andhra Pradesh",
         category: "Rank #6",
-        logo: "/logos/ecet.svg", // Use a placeholder if you don't have an official logo
+        logo: "assets/logos/ecet.webp", // Use a placeholder if you don't have an official logo
     }
 
 ];

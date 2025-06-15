@@ -86,7 +86,7 @@ export const InfiniteMovingCards = ({
                 <img
                   src={item.logo}
                   alt={item.platform}
-                  className="w-8 h-8 object-contain"
+                  className="w-8 h-8 rounded-full object-cover"
                 />
                 <div className="flex flex-col">
                   <span className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">

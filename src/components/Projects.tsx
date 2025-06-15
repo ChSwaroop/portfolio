@@ -122,7 +122,7 @@ const Projects = () => {
                                 </CardItem>
                                 <CardItem translateZ="100" className="w-full mt-4">
                                     <img
-                                        src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        src="assets/images/project.jpg"
                                         height="800"
                                         width="800"
                                         className="h-60 w-full object-cover rounded-2xl group-hover/card:shadow-xl"

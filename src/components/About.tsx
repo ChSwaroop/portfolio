@@ -51,7 +51,7 @@ const About = () => {
                                         transition={{ duration: 0.6, delay: 0.4 }}
                                         viewport={{ once: true }}
                                     >
-                                        Currently, I'm working as an Associate SDE Intern at Apxor Technology Solutions, where I'm exploring cutting-edge technologies including Large Language Models and AI-powered tools, contributing to products that improve user engagement and intelligence in mobile applications.
+                                        Currently, I'm working as an Associate SDE at Apxor Technology Solutions, where I'm exploring cutting-edge technologies including Large Language Models and AI-powered tools, contributing to products that improve user engagement and intelligence in mobile applications.
 
                                         I’m driven by a love for clean UI, thoughtful UX, and scalable design systems—always aiming to bridge the gap between design and development.
                                     </motion.p>
