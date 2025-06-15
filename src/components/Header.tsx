@@ -56,7 +56,7 @@ const Header = () => {
                     }}
                     className='items-center hidden md:flex'
                 >
-                    <ul className='flex justify-between items-center gap-20 text-muted-foreground'>
+                    <ul className='flex justify-between items-center gap-20 text-foreground'>
                         <li><motion.button className='inline-block hover:text-primary cursor-pointer' whileHover={{
                             scale: 1.1,
                         }} onClick={() => scrollToSection("projects")} >Projects</motion.button></li>
@@ -95,13 +95,16 @@ const Header = () => {
                         transition={{
                             scale: { duration: 0.2 },
                             y: { duration: 0.4 },
-                            ease: 'easeIn'
+                            ease: 'easeIn',
                         }}
                     >
-                        <Button className='rounded-full cursor-pointer'>Resume
-                            <Download />
-                        </Button>
+                        <a href="/assets/resume.pdf" download>
+                            <Button className="rounded-full cursor-pointer flex gap-2 items-center">
+                                Resume <Download />
+                            </Button>
+                        </a>
                     </motion.div>
+
                     <div className={`themeChange h-10 w-[90px]  ${theme == 'light' ? 'bg-linear-to-tr from-[#7da9ce] from-35% via-[#b4cac7] to-[#fde9ac]' : 'bg-linear-to-t from-[#192636] to-[#a9b5b9] to-90% '} rounded-full px-[1px] items-center flex justify-between relative overflow-hidden shadow-md shadow-gray-400`}>
                         <AnimatePresence mode='wait'>
                             {theme != 'light' &&
@@ -220,18 +223,18 @@ const Header = () => {
                             className='items-center'
                         >
                             <ul className='flex flex-col justify-between gap-8 text-muted-foreground'>
-                                <li><motion.a href="" className='inline-block hover:text-primary' whileHover={{
+                                <li><motion.button className='inline-block hover:text-primary cursor-pointer' whileHover={{
                                     scale: 1.1,
-                                }}>Projects</motion.a></li>
-                                <li><motion.a href="" className='inline-block hover:text-primary' whileHover={{
+                                }} onClick={() => scrollToSection("projects")} >Projects</motion.button></li>
+                                <li><motion.button className='inline-block hover:text-primary cursor-pointer' whileHover={{
                                     scale: 1.1,
-                                }}>Experience</motion.a></li>
-                                <li><motion.a href="" className='inline-block hover:text-primary' whileHover={{
+                                }} onClick={() => scrollToSection("experience")}>Experience</motion.button></li>
+                                <li><motion.button className='inline-block hover:text-primary cursor-pointer' whileHover={{
                                     scale: 1.1,
-                                }}>Skills</motion.a></li>
-                                <li><motion.a href="" className='inline-block hover:text-primary' whileHover={{
+                                }} onClick={() => scrollToSection("skills")}>Skills</motion.button></li>
+                                <li><motion.button className='inline-block hover:text-primary cursor-pointer' whileHover={{
                                     scale: 1.1,
-                                }}>Acheivements</motion.a></li>
+                                }} onClick={() => scrollToSection("achievements")}>Acheivements</motion.button></li>
                             </ul>
                         </motion.nav>
                     </motion.div>}

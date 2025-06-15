@@ -152,10 +152,10 @@ function RouteComponent() {
         }}
       >
         <ul className='grid grid-cols-2 md:grid-cols-4 justify-between max-w-4xl w-full text-sm md:text-xl'>
-          <li><a href="" className='flex gap-3 items-center justify-center font-medium text-muted-foreground'><Mail />Email</a></li>
-          <li><a href="" className='flex gap-3 items-center justify-center font-medium text-muted-foreground'><Github />Github</a></li>
-          <li><a href="" className='flex gap-3 items-center justify-center font-medium text-muted-foreground'><Linkedin />LinkedIn</a></li>
-          <li><a href="" className='flex gap-3 items-center justify-center font-medium text-muted-foreground'><Code />LeetCode</a></li>
+          <li><a href="mailto:swaroopch1234@gmail.com" target='blank' className='flex gap-3 items-center justify-center font-medium text-muted-foreground hover:text-primary'><Mail />Email</a></li>
+          <li><a href="https://github.com/ChSwaroop" target='blank' className='flex gap-3 items-center justify-center font-medium text-muted-foreground hover:text-primary'><Github />Github</a></li>
+          <li><a href="https://www.linkedin.com/in/swaroop-chitturi/" target='blank' className='flex gap-3 items-center justify-center font-medium text-muted-foreground hover:text-primary'><Linkedin />LinkedIn</a></li>
+          <li><a href="https://leetcode.com/u/Swaroop_18/" target='blank' className='flex gap-3 items-center justify-center font-medium text-muted-foreground hover:text-primary'><Code />LeetCode</a></li>
         </ul>
       </motion.footer>
 

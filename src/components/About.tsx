@@ -26,7 +26,7 @@ const About = () => {
                                     transition={{ duration: 0.3 }}
                                 >
                                     <Avatar className="w-48 h-48 rounded-full shadow-lg">
-                                        <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Chitturi Swaroop" className='rounded-full shadow-lg' />
+                                        <AvatarImage src="/assets/images/one-s.jpg" alt="Chitturi Swaroop" className='rounded-full shadow-lg object-cover h-48 w-48' />
                                         <AvatarFallback className="text-4xl">CS</AvatarFallback>
                                     </Avatar>
                                 </motion.div>
