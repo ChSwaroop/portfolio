@@ -52,3 +52,9 @@ export default tseslint.config({
   },
 })
 ```
+
+## Editing content
+
+All copy (roles, projects, skills, achievements, links) lives in `src/data/portfolio.ts`. Sections in `src/components/site/` only map over that data, so updating the site is a data change.
+
+Theme tokens (one accent per theme) are in `src/index.css`. Motion uses Motion for React via `LazyMotion`, and every animation falls back to its final state under `prefers-reduced-motion`.
