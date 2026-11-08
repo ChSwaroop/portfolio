@@ -1,151 +1,162 @@
 import { motion } from 'motion/react';
-import { CardBody, CardContainer, CardItem } from './ui/3d-card'
+import { Github, ArrowUpRight, Layers, StickyNote, GraduationCap, BookOpen } from 'lucide-react';
+
+type Project = {
+    title: string;
+    icon: React.ElementType;
+    gradient: string;
+    technologies: string[];
+    description: string[];
+    github?: string;
+    demo?: string;
+};
+
+const projects: Project[] = [
+    {
+        title: 'Trello Clone',
+        icon: Layers,
+        gradient: 'from-violet-500 to-indigo-500',
+        technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'TanStack Query', 'Zustand', 'Tailwind'],
+        description: [
+            'Full-stack Kanban-style project management platform inspired by Trello, with board, list, and card management and real-time UI updates.',
+            'Drag-and-drop reordering plus advanced card features — labels, due dates, checklists, member assignments, comments, and activity tracking.',
+            'File attachments, activity logs, filtering/search, and scalable REST APIs backed by Node.js, Express, PostgreSQL, and Supabase Storage.',
+        ],
+        github: 'https://github.com/ChSwaroop',
+    },
+    {
+        title: 'Aditya App',
+        icon: GraduationCap,
+        gradient: 'from-sky-500 to-cyan-500',
+        technologies: ['Flutter', 'Dart', 'Firebase'],
+        description: [
+            'Mobile application with user authentication and a review system built on Firebase.',
+            'Enabled users to submit and manage feedback efficiently, wrapped in a clean and intuitive UI.',
+        ],
+        github: 'https://github.com/ChSwaroop',
+    },
+    {
+        title: 'Notes App',
+        icon: StickyNote,
+        gradient: 'from-amber-500 to-orange-500',
+        technologies: ['Flutter', 'Dart', 'Firebase'],
+        description: [
+            'Feature-rich notes app with real-time data storage using Firebase, plus image uploads and note sharing.',
+            'Modernised UI with light/dark mode and optimized data handling for smooth performance.',
+        ],
+        github: 'https://github.com/ChSwaroop',
+    },
+    {
+        title: 'Learn Online',
+        icon: BookOpen,
+        gradient: 'from-emerald-500 to-teal-500',
+        technologies: ['Flutter', 'Dart', 'FlutterFlow'],
+        description: [
+            'Education app offering insights on universities, courses, exams, and career options via detailed Q&A pages.',
+            'Responsive frontend built with FlutterFlow and deployed to the Google Play Store.',
+        ],
+        github: 'https://github.com/ChSwaroop',
+    },
+];
 
 const Projects = () => {
-
-    const projects = [
-        {
-            title: 'Aditya App',
-            technologies: ['Flutter', 'Dart', 'Firebase'],
-            description: ['Developed a user-friendly application using the Flutter framework and Firebase database.',
-                'Used Firebase for user authentication and storing the reviews of the users.'
-            ],
-        },
-        {
-            title: 'NOTES APP',
-            technologies: ['Flutter', 'Dart', 'Firebase'],
-            description: [' Developed a feature-rich notes app using Flutter, integrated with Firebase for seamless storage of notes, user data, and images.',
-                'Implemented functionality for easy note sharing, promoting collaboration and knowledge sharing among users.',
-                'Designed an intuitive user interface with support for light/dark modes, enabling enhanced user experience and ease of navigation.'
-            ],
-        },
-        {
-            title: 'Learn Online',
-            technologies: ['Flutter', 'Dart'],
-            description: ['Developed ”Learn Online,” a Flutter app offering comprehensive insights on universities, courses, exams, and career options.',
-                'Designed an intuitive, responsive frontend using FlutterFlow,enabling seamless navigation through detailed QA pages.',
-                'Successfully deployed the app on the Google Play Store, enhancing accessibility and user engagement in education'
-            ],
-        }
-    ];
-
     return (
-        <div className='max-w-7xl' id="projects">
-            <motion.h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-7xl px-5"
-                initial={{
-                    y: 30,
-                    opacity: 0,
-                }}
-                whileInView={{
-                    y: 0,
-                    opacity: 1,
-                }}
-                viewport={{ once: true }}
-                transition={{
-                    duration: 0.6,
-                }}
-            >
-                Projects
-            </motion.h2>
-
-            {projects.map((project, index) => (
-                <motion.div
-                    key={index}
-                    className="w-full flex flex-wrap md:flex-nowrap justify-center md:justify-start gap-3.5 px-5 items-center"
+        <section className="w-full py-20" id="projects">
+            <div className="max-w-6xl mx-auto px-5">
+                <motion.p
+                    className="text-primary font-medium tracking-widest uppercase text-xs mb-2"
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
                 >
-                    {/* Description */}
-                    <motion.div
-                        className={`w-full md:w-auto ${index % 2 === 1 ? 'order-2 md:order-1' : 'order-2 md:order-2'
-                            }`}
-                        initial={{
-                            y: 50,
-                            opacity: 0,
-                        }}
-                        whileInView={{
-                            y: 0,
-                            opacity: 1,
-                        }}
-                        viewport={{ once: true }}
-                        transition={{
-                            duration: 0.6,
-                            delay: index * 0.2,
-                        }}
-                    >
-                        <ul className="ml-8 list-disc text-sm md:text-lxl lg:text-lg">
-                            {project.description.map((des, ind) => (
-                                <li key={ind}>{des}</li>
-                            ))}
-                        </ul>
-                    </motion.div>
+                    Things I've built
+                </motion.p>
+                <motion.h2
+                    className="text-3xl md:text-4xl font-bold mb-12 text-foreground"
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.05 }}
+                >
+                    Featured Projects
+                </motion.h2>
 
-
-                    {/* Card */}
-                    <motion.div
-                        className={`w-full md:w-auto ${index % 2 === 1
-                            ? 'order-1 md:order-2'
-                            : 'order-1 md:order-1'
-                            }`}
-
-                        initial={{
-                            y: 50,  // Right slide for even index
-                            opacity: 0,
-                        }}
-                        whileInView={{
-                            y: 0,
-                            opacity: 1,
-                        }}
-                        viewport={{ once: true }}
-                        transition={{
-                            duration: 0.6,
-                            delay: index * 0.2,
-                        }}
-                    >
-                        <CardContainer className="inter-var place-content-start">
-                            <CardBody className="bg-gray-50 group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] md:max-w-[60vh] lg:max-w-full h-auto rounded-2xl p-6 border">
-                                <CardItem
-                                    translateZ="50"
-                                    className="text-xl font-bold text-black dark:text-white"
-                                >
-                                    {project.title}
-                                </CardItem>
-                                <CardItem
-                                    as="p"
-                                    translateZ="60"
-                                    className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
-                                >
-                                    {project.technologies.map((tech, ind) => (
-                                        <span key={ind}>
-                                            {tech}
-                                            {ind !== project.technologies.length - 1 && ', '}
-                                        </span>
-                                    ))}
-                                </CardItem>
-                                <CardItem translateZ="100" className="w-full mt-4">
-                                    <img
-                                        src="assets/images/project.jpg"
-                                        height="800"
-                                        width="800"
-                                        className="h-60 w-full object-cover rounded-2xl group-hover/card:shadow-xl"
-                                        alt="thumbnail"
-                                    />
-                                </CardItem>
-                                <div className="flex justify-end items-center mt-10">
-                                    <CardItem
-                                        translateZ={20}
-                                        as="button"
-                                        className="px-4 py-2 rounded-2xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
-                                    >
-                                        Sign up
-                                    </CardItem>
+                <div className="grid gap-6 md:grid-cols-2">
+                    {projects.map((project, index) => {
+                        const Icon = project.icon;
+                        return (
+                            <motion.article
+                                key={project.title}
+                                className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5"
+                                initial={{ y: 40, opacity: 0 }}
+                                whileInView={{ y: 0, opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                            >
+                                {/* Banner */}
+                                <div className={`relative h-32 bg-gradient-to-br ${project.gradient} flex items-center justify-center overflow-hidden`}>
+                                    <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:16px_16px]" />
+                                    <Icon className="h-12 w-12 text-white/90 transition-transform duration-300 group-hover:scale-110" />
                                 </div>
-                            </CardBody>
-                        </CardContainer>
-                    </motion.div>
-                </motion.div>
-            ))}
-        </div>
 
-    )
-}
+                                {/* Body */}
+                                <div className="flex flex-1 flex-col p-6">
+                                    <div className="mb-3 flex items-start justify-between gap-3">
+                                        <h3 className="text-xl font-bold text-foreground">{project.title}</h3>
+                                        <div className="flex items-center gap-2 text-muted-foreground">
+                                            {project.github && (
+                                                <a
+                                                    href={project.github}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    aria-label={`${project.title} source on GitHub`}
+                                                    className="transition-colors hover:text-primary"
+                                                >
+                                                    <Github className="h-5 w-5" />
+                                                </a>
+                                            )}
+                                            {project.demo && (
+                                                <a
+                                                    href={project.demo}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    aria-label={`${project.title} live demo`}
+                                                    className="transition-colors hover:text-primary"
+                                                >
+                                                    <ArrowUpRight className="h-5 w-5" />
+                                                </a>
+                                            )}
+                                        </div>
+                                    </div>
 
-export default Projects
+                                    <ul className="mb-5 flex-1 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                                        {project.description.map((des, ind) => (
+                                            <li key={ind} className="flex gap-2">
+                                                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary/60" />
+                                                <span>{des}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <div className="flex flex-wrap gap-2">
+                                        {project.technologies.map((tech) => (
+                                            <span
+                                                key={tech}
+                                                className="rounded-full border border-border bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground"
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </motion.article>
+                        );
+                    })}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default Projects;

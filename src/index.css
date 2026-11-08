@@ -128,3 +128,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Hide the native cursor when the custom follower is active (fine pointers only) */
+body.custom-cursor,
+body.custom-cursor * {
+  cursor: none !important;
+}

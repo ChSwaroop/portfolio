@@ -4,6 +4,7 @@ import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import { useEffect } from 'react';
 import '../index.css'
 import Header from '@/components/Header';
+import CursorFollower from '@/components/CursorFollower';
 
 const RootComponent = () => {
     //theme settings
@@ -24,8 +25,17 @@ const RootComponent = () => {
 
     return (
         <>
+            {/* Faded grid pattern at the top of the page */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[600px] overflow-hidden
+                    bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)]
+                    bg-[size:44px_44px]
+                    [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,black_40%,transparent_100%)]"
+            />
+
+            <CursorFollower />
             <Header />
-            <hr />
             <Outlet />
             <TanStackRouterDevtools />
         </>

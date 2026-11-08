@@ -39,9 +39,9 @@ const About = () => {
                                         transition={{ duration: 0.6, delay: 0.2 }}
                                         viewport={{ once: true }}
                                     >
-                                        I'm a passionate Software Developer specializing in frontend and mobile app development. I recently completed my Bachelor's in Computer Science and Engineering at Aditya Engineering College.
+                                        I'm a passionate Software Engineer who loves building scalable, full-stack web applications. I hold a Bachelor's in Computer Science and Engineering from Aditya Engineering College.
 
-                                        My expertise lies in building elegant, responsive user interfaces using React and crafting high-performance mobile applications with Flutter. I take pride in creating smooth, intuitive user experiences that blend design with functionality.
+                                        My expertise lies in crafting elegant, responsive user interfaces with React and building robust backend services in Go — with a foundation in mobile development using Flutter.
                                     </motion.p>
 
                                     <motion.p
@@ -51,9 +51,9 @@ const About = () => {
                                         transition={{ duration: 0.6, delay: 0.4 }}
                                         viewport={{ once: true }}
                                     >
-                                        Currently, I'm working as an Associate SDE at Apxor Technology Solutions, where I'm exploring cutting-edge technologies including Large Language Models and AI-powered tools, contributing to products that improve user engagement and intelligence in mobile applications.
+                                        Currently, I'm working as a Software Engineer I at Deeptha.ai, where I build scalable web applications with React and Go and work with cutting-edge AI technologies — Large Language Models, prompt engineering, and Retrieval-Augmented Generation (RAG).
 
-                                        I’m driven by a love for clean UI, thoughtful UX, and scalable design systems—always aiming to bridge the gap between design and development.
+                                        I'm driven by a love for clean UI, thoughtful UX, and scalable systems—always aiming to bridge the gap between design and engineering.
                                     </motion.p>
                                 </div>
                             </div>

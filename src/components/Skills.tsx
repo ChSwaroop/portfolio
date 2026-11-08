@@ -1,137 +1,177 @@
-import { cn } from "@/lib/utils";
-import { Server } from "lucide-react";
 import { motion } from "motion/react";
+import {
+  Code2,
+  Layout,
+  Server,
+  Smartphone,
+  Database,
+  Cpu,
+  Sparkles,
+} from "lucide-react";
+
+type Group = {
+  icon: React.ElementType;
+  title: string;
+  accent: string;
+  items: string[];
+};
+
+const skillGroups: Group[] = [
+  {
+    icon: Code2,
+    title: "Languages",
+    accent: "#8b5cf6",
+    items: ["Java", "Go", "Dart", "C", "JavaScript", "TypeScript"],
+  },
+  {
+    icon: Layout,
+    title: "Frontend",
+    accent: "#06b6d4",
+    items: ["React", "HTML", "CSS", "Tailwind CSS"],
+  },
+  {
+    icon: Server,
+    title: "Backend",
+    accent: "#10b981",
+    items: ["Node.js", "Go (Golang)", "REST APIs"],
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile",
+    accent: "#3b82f6",
+    items: ["Flutter"],
+  },
+  {
+    icon: Database,
+    title: "Databases",
+    accent: "#f59e0b",
+    items: ["Firebase", "MongoDB", "MySQL"],
+  },
+  {
+    icon: Cpu,
+    title: "Core Concepts",
+    accent: "#f43f5e",
+    items: ["Data Structures & Algorithms", "OOP", "System Design"],
+  },
+];
+
+const aiSkills = [
+  "Large Language Models",
+  "Prompt Engineering",
+  "AI API Integration (OpenAI / Gemini)",
+  "Retrieval-Augmented Generation",
+];
 
 export default function Skills() {
-  const skills = [
-    {
-      icon: "💻",
-      title: "C Programming",
-      description: "Strong base in procedural programming and memory management.",
-    },
-    {
-      icon: "☕",
-      title: "Java",
-      description: "Experienced in OOP and backend development.",
-    },
-    {
-      icon: "🎯",
-      title: "Dart",
-      description: "Used with Flutter for building mobile apps.",
-    },
-
-    {
-      icon: "🧪",
-      title: "JavaScript",
-      description: "Dynamic scripting for building interactive UIs.",
-    },
-    {
-      icon: "📱",
-      title: "Flutter",
-      description: "Cross-platform mobile development with elegant UIs.",
-    },
-    {
-      icon: "⚛️",
-      title: "React",
-      description: "SPA development using modern frontend practices.",
-    },
-    {
-      icon: "🧩",
-      title: "Tailwind CSS",
-      description: "Utility-first CSS framework for rapid UI building.",
-    },
-    {
-      icon: <Server className="w-6 h-6" />,
-      title: "Node.js",
-      description: "Backend development using event-driven architecture.",
-    },
-    {
-      icon: "📊",
-      title: "SQL",
-      description: "Skilled in querying and managing relational databases.",
-    },
-    {
-      icon: "🧠",
-      title: "DSA & OOPS",
-      description: "Strong in algorithms, data structures, and object-oriented design.",
-    }
-  ];
-
   return (
-    <div className="py-20" id="skills">
-      <motion.h1 className="text-lg md:text-4xl mb-10 text-black dark:text-white max-w-7xl mx-auto px-5"
-        initial={{
-          y: 50,
-          opacity: 0,
-        }}
-        whileInView={{
-          y: 0,
-          opacity: 1,
-        }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 0.6,
-        }}
-      >Skills</motion.h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10  max-w-7xl mx-auto">
-        {skills.map((skill, index) => (
-          <Skill key={skill.title} {...skill} index={index} />
-        ))}
+    <section className="w-full py-20" id="skills">
+      <div className="max-w-6xl mx-auto px-5">
+        <motion.p
+          className="text-primary font-medium tracking-widest uppercase text-xs mb-2"
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          What I work with
+        </motion.p>
+        <motion.h2
+          className="text-3xl md:text-4xl font-bold mb-12 text-foreground"
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+        >
+          Skills &amp; Technologies
+        </motion.h2>
+
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {skillGroups.map((group, index) => {
+            const Icon = group.icon;
+            return (
+              <motion.div
+                key={group.title}
+                style={{ ["--accent" as string]: group.accent }}
+                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)] hover:shadow-[0_12px_40px_-16px_var(--accent)]"
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.07 }}
+              >
+                {/* Accent glow that reveals on hover */}
+                <div
+                  className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-25"
+                  style={{ background: group.accent }}
+                />
+
+                <div className="mb-5 flex items-center gap-3">
+                  <span className="relative flex h-11 w-11 items-center justify-center rounded-xl text-white shadow-lg transition-transform duration-300 group-hover:scale-110"
+                    style={{ background: group.accent }}
+                  >
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <h3 className="text-lg font-semibold text-foreground">
+                    {group.title}
+                  </h3>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span
+                      key={item}
+                      className="flex items-center gap-1.5 rounded-lg border border-border bg-background/60 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors group-hover:text-foreground"
+                    >
+                      <span
+                        className="h-1.5 w-1.5 rounded-full"
+                        style={{ background: group.accent }}
+                      />
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* AI & Emerging Tech — highlighted full-width card */}
+        <motion.div
+          className="group relative mt-5 overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/15 via-fuchsia-500/10 to-transparent p-6 md:p-8"
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/30 blur-3xl" />
+
+          <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+            <div className="flex items-center gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-fuchsia-500 text-white shadow-lg">
+                <Sparkles className="h-6 w-6" />
+              </span>
+              <div>
+                <h3 className="text-xl font-bold text-foreground">
+                  AI &amp; Emerging Tech
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Building intelligent, LLM-powered products
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {aiSkills.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-primary/30 bg-background/60 px-3 py-1.5 text-xs font-medium text-foreground backdrop-blur-sm"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 }
-
-const Skill = ({
-  title,
-  description,
-  icon,
-  index,
-}: {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  index: number;
-}) => {
-  return (
-    <motion.div
-      className={cn(
-        "flex flex-col lg:border-r  py-10 relative group/feature dark:border-neutral-800",
-        (index === 0 || index === 4 || index === 8) && "lg:border-l dark:border-neutral-800",
-        index < 8 && "lg:border-b dark:border-neutral-800"
-      )}
-      initial={{
-        y: 50,
-        opacity: 0,
-      }}
-      whileInView={{
-        y: 0,
-        opacity: 1,
-      }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.1, // Stagger the animation for each skill
-      }}
-    >
-      {index < 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
-      )}
-      {index >= 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
-      )}
-      <div className="mb-4 relative z-10 px-10 text-neutral-600 dark:text-neutral-400">
-        {icon}
-      </div>
-      <div className="text-lg font-bold mb-2 relative z-10 px-10">
-        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-blue-500 transition-all duration-200 origin-center" />
-        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-800 dark:text-neutral-100">
-          {title}
-        </span>
-      </div>
-      <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10">
-        {description}
-      </p>
-    </motion.div>
-  );
-};

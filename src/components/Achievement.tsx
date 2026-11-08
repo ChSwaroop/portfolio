@@ -21,7 +21,7 @@ export function InfiniteMovingCardsDemo() {
                 type: 'spring',
             }}
         >
-            <h1 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-7xl w-full px-4  ">Acheivements</h1>
+            <h1 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-7xl w-full px-4  ">Achievements</h1>
             <InfiniteMovingCards
                 items={achievements}
                 direction="right"

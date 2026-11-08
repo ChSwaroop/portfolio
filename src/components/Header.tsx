@@ -68,7 +68,7 @@ const Header = () => {
                         }} onClick={() => scrollToSection("skills")}>Skills</motion.button></li>
                         <li><motion.button className='inline-block hover:text-primary cursor-pointer' whileHover={{
                             scale: 1.1,
-                        }} onClick={() => scrollToSection("achievements")}>Acheivements</motion.button></li>
+                        }} onClick={() => scrollToSection("achievements")}>Achievements</motion.button></li>
                     </ul>
                 </motion.nav>
 
@@ -234,7 +234,7 @@ const Header = () => {
                                 }} onClick={() => scrollToSection("skills")}>Skills</motion.button></li>
                                 <li><motion.button className='inline-block hover:text-primary cursor-pointer' whileHover={{
                                     scale: 1.1,
-                                }} onClick={() => scrollToSection("achievements")}>Acheivements</motion.button></li>
+                                }} onClick={() => scrollToSection("achievements")}>Achievements</motion.button></li>
                             </ul>
                         </motion.nav>
                     </motion.div>}

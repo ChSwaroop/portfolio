@@ -16,7 +16,27 @@ function RouteComponent() {
 
   const data = [
     {
-      title: "Apr 2025 - Present",
+      title: "Aug 2025 - Present",
+      content: (
+        <div>
+          <p className="text-base font-normal text-neutral-800 md:text-xl capitalize dark:text-neutral-200">
+            Deeptha.ai
+          </p>
+          <p className='pb-8 text-sm md:text-lg text-muted-foreground'>Software Engineer I</p>
+          <ul className='text-sm list-disc space-y-4 md:text-base'>
+            <li>Built and maintained scalable web applications using React on the frontend and Go on the backend
+              in a fast-paced startup environment.</li>
+            <li>Designed and developed reusable UI components, improving development efficiency and consistency
+              across modules.</li>
+            <li>Managed complex application state and optimized rendering performance for dynamic dashboards.</li>
+            <li>Collaborated with cross-functional teams across product, design, and QA to ship high-quality
+              features in agile sprints.</li>
+          </ul>
+        </div>
+      ),
+    },
+    {
+      title: "Oct 2024 – Jul 2025",
       content: (
         <div>
           <p className="text-base font-normal text-neutral-800 md:text-xl capitalize dark:text-neutral-200">
@@ -24,26 +44,9 @@ function RouteComponent() {
           </p>
           <p className='pb-8 text-sm md:text-lg text-muted-foreground'>Associate SDE</p>
           <ul className='text-sm list-disc space-y-4 md:text-base'>
-            <li>Gaining hands-on experience with full-stack technologies, primarily focusing on React for frontend and Go for backend
-              services, while building scalable web applications and interactive user interfaces.</li>
-            <li>Actively learning about Large Language Models (LLMs), AI-driven tools, and integrating cutting-edge AI technologies
-              into software solutions to enhance user experiences and product functionalities.</li>
-          </ul>
-        </div>
-      ),
-    },
-    {
-      title: "Oct 2024 – Apr 2025",
-      content: (
-        <div>
-          <p className="text-base font-normal text-neutral-800 md:text-xl capitalize dark:text-neutral-200">
-            Apxor technology solutions
-          </p>
-          <p className='pb-8 text-sm md:text-lg text-muted-foreground'>Associate SDE Intern</p>
-          <ul className='text-sm list-disc space-y-4 md:text-base'>
-            <li>Gaining hands-on experience with full-stack technologies, primarily focusing on React for frontend and Go for backend
-              services, while building scalable web applications and interactive user interfaces.</li>
-            <li>Actively learning about Large Language Models (LLMs), AI-driven tools, and integrating cutting-edge AI technologies
+            <li>Developed full-stack features using React and Go, contributing to scalable and interactive
+              web applications.</li>
+            <li>Explored Large Language Models (LLMs), AI-driven tools, and integrated cutting-edge AI technologies
               into software solutions to enhance user experiences and product functionalities.</li>
           </ul>
         </div>
@@ -56,11 +59,11 @@ function RouteComponent() {
           <p className="text-base font-normal text-neutral-800 md:text-xl capitalize dark:text-neutral-200">
             Workbees technologies
           </p>
-          <p className='pb-8 text-sm md:text-lg text-muted-foreground'>Associate SDE Intern</p>
+          <p className='pb-8 text-sm md:text-lg text-muted-foreground'>Flutter Developer Intern</p>
           <ul className='text-sm list-disc space-y-4 md:text-base'>
-            <li>As a Flutter development intern, I actively involved in developing mobile applications using Flutter framework, including
-              UI design, implementation of features, and integration of backend services.</li>
-            <li>Engaged in collaborative efforts with senior developers and designers to understand project requirements, troubleshoot
+            <li>Developed mobile applications using the Flutter framework, including UI design, feature
+              implementation, and integration of backend services.</li>
+            <li>Collaborated with senior developers and designers to understand project requirements, troubleshoot
               issues, and implement effective solutions.</li>
           </ul>
         </div>
@@ -131,7 +134,7 @@ function RouteComponent() {
             duration: 0.4,
             ease: 'easeIn'
           }}
-        >Associate Software Development Engineer</motion.h3>
+        >Software Engineer @ Deeptha.ai</motion.h3>
       </div>
 
       <motion.footer className='w-full flex justify-center my-12'
