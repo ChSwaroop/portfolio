@@ -1,4 +1,5 @@
 import { profile, projects, type Project } from '@/data/portfolio'
+import { newTab } from '@/lib/links'
 import { ArrowUpRight, Reveal, Section } from './primitives'
 
 /** A stylised app window standing in for a screenshot. */
@@ -43,7 +44,7 @@ export function Projects() {
                 <div className="flex flex-col gap-2 px-3">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <h3 className="m-0 text-xl font-medium tracking-[-0.02em]">
-                      <a href={p.href} className="after:absolute after:inset-0 after:rounded-3xl">
+                      <a href={p.href} {...newTab} className="after:absolute after:inset-0 after:rounded-3xl">
                         {p.name}
                       </a>
                     </h3>
@@ -69,6 +70,7 @@ export function Projects() {
           <Reveal delay={0.06} className="flex flex-1">
             <a
               href={profile.github.href}
+              {...newTab}
               className="group flex min-h-72 flex-1 flex-col items-center justify-center gap-4 rounded-3xl border border-dashed border-line-strong p-8 text-center transition-colors hover:border-faint hover:bg-surface"
             >
               <span className="grid size-14 place-items-center rounded-full bg-ink text-on-ink transition-transform group-hover:-translate-y-1">

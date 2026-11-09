@@ -10,14 +10,6 @@ export function ArrowUpRight({ className }: { className?: string }) {
   )
 }
 
-export function DownloadIcon({ className }: { className?: string }) {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={cn('size-4 shrink-0', className)}>
-      <path d="M12 4v11M7 10l5 5 5-5M5 20h14" />
-    </svg>
-  )
-}
-
 /** Fades content up once as it scrolls into view. Static under reduced motion. */
 export function Reveal({ children, className, delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
   const reduce = useReducedMotion()

@@ -1,6 +1,8 @@
 import { Mail } from 'lucide-react'
+import { RippleLink } from '@/components/ui/ripple-button'
 import { contactLinks, profile } from '@/data/portfolio'
-import { ArrowUpRight, DownloadIcon, Eyebrow, Reveal } from './primitives'
+import { newTab } from '@/lib/links'
+import { ArrowUpRight, Eyebrow, Reveal } from './primitives'
 
 export function Contact() {
   return (
@@ -15,27 +17,24 @@ export function Contact() {
             <p className="m-0 max-w-[30em] text-[17px] leading-relaxed text-muted-fg">
               Email is the fastest way to reach me. I reply within a couple of days.
             </p>
-            <a
+            <RippleLink
               href={`mailto:${profile.email}`}
-              className="flex min-h-12 max-w-full items-center gap-2.5 rounded-full bg-ink px-6 text-[15px] font-medium text-on-ink transition-transform hover:-translate-y-px"
+              rippleColor="var(--on-ink)"
+              className="min-h-12 max-w-full gap-2.5 rounded-full bg-ink px-6 text-[15px] font-medium text-on-ink transition-transform hover:-translate-y-px"
             >
               <Mail aria-hidden="true" className="size-4 shrink-0" />
               <span className="truncate">{profile.email}</span>
-            </a>
+            </RippleLink>
             <ul className="m-0 mt-4 flex list-none flex-wrap justify-center gap-2 p-0">
               {contactLinks.map((l) => (
                 <li key={l.label}>
                   <a
                     href={l.href}
-                    download={l.download || undefined}
+                    {...newTab}
                     className="group flex min-h-11 items-center gap-2 rounded-full border border-line bg-surface/80 px-4 text-sm font-medium text-fg transition-colors hover:border-line-strong"
                   >
                     {l.label}
-                    {l.download ? (
-                      <DownloadIcon className="size-3.5 text-muted-fg" />
-                    ) : (
-                      <ArrowUpRight className="text-muted-fg transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    )}
+                    <ArrowUpRight className="text-muted-fg transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
                 </li>
               ))}

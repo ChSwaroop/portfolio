@@ -1,4 +1,5 @@
 import { m, useReducedMotion } from "motion/react";
+import { useId } from "react";
 import { experience, type Role } from "@/data/portfolio";
 import { Reveal, Section } from "./primitives";
 
@@ -54,6 +55,7 @@ const connectors = [
 function Connector({ index }: { index: number }) {
   const reduce = useReducedMotion();
   const c = connectors[index];
+  const maskId = `connector-${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
   if (!c) return null;
   // Lines draw once the cards have settled, one after the other.
   const delay = 0.5 + (index - 1) * 0.75;
@@ -83,16 +85,27 @@ function Connector({ index }: { index: number }) {
       whileInView="shown"
       viewport={{ once: true, margin: "0px 0px -120px 0px" }}
     >
-      <m.path
+      {/* The dots are revealed through a solid stroke that draws in, so they appear in sequence. */}
+      <mask id={maskId} maskUnits="userSpaceOnUse">
+        <m.path
+          d={c.d}
+          stroke="#fff"
+          strokeWidth="8"
+          strokeLinecap="round"
+          variants={{ hidden: { pathLength: 0 }, shown: { pathLength: 1 } }}
+          transition={{
+            duration: 0.7,
+            ease: [0.6, 0, 0.3, 1],
+            delay: delay + 0.15,
+          }}
+        />
+      </mask>
+      <path
         d={c.d}
-        strokeWidth="2.5"
+        mask={`url(#${maskId})`}
+        strokeWidth="3"
         strokeLinecap="round"
-        variants={{ hidden: { pathLength: 0 }, shown: { pathLength: 1 } }}
-        transition={{
-          duration: 0.7,
-          ease: [0.6, 0, 0.3, 1],
-          delay: delay + 0.15,
-        }}
+        strokeDasharray="0.1 7"
       />
       {ring(c.start, delay)}
       {ring(c.end, delay + 0.8)}

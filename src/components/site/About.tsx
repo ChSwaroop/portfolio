@@ -1,4 +1,6 @@
+import { useReducedMotion } from 'motion/react'
 import type { CSSProperties } from 'react'
+import { NumberTicker } from '@/components/ui/number-ticker'
 import { profile, stackLayers, stats } from '@/data/portfolio'
 import { Eyebrow, Reveal } from './primitives'
 
@@ -26,6 +28,22 @@ function Chip({ name, layer, className, style }: { name: string; layer: string; 
       </span>
       <span className="font-medium">{name}</span>
       <span className="sr-only">({layer})</span>
+    </span>
+  )
+}
+
+/** Counts the number inside a stat ("#6", "2+ yrs") up from zero, keeping its prefix and suffix. */
+function StatValue({ value }: { value: string }) {
+  const reduce = useReducedMotion()
+  const match = /^(\D*)(\d+)(.*)$/.exec(value)
+  if (!match) return <span aria-hidden="true">{value}</span>
+  const [, prefix, digits, suffix] = match
+  const n = Number(digits)
+  return (
+    <span aria-hidden="true">
+      {prefix}
+      <NumberTicker value={n} startValue={reduce ? n : 0} className="tracking-[inherit] text-fg" />
+      {suffix}
     </span>
   )
 }
@@ -58,7 +76,10 @@ export function About() {
           {stats.map((s) => (
             <div key={s.label} className="flex flex-col-reverse gap-1.5 rounded-2xl border border-line bg-surface p-5">
               <dt className="text-sm text-muted-fg">{s.label}</dt>
-              <dd className="m-0 text-4xl font-medium tracking-[-0.04em] tabular-nums">{s.value}</dd>
+              <dd className="m-0 text-4xl font-medium tracking-[-0.04em] tabular-nums">
+                <span className="sr-only">{s.value}</span>
+                <StatValue value={s.value} />
+              </dd>
             </div>
           ))}
         </dl>

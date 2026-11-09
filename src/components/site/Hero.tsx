@@ -1,6 +1,8 @@
 import { m } from 'motion/react'
+import { RippleLink } from '@/components/ui/ripple-button'
 import { profile, stackLayers } from '@/data/portfolio'
-import { ArrowUpRight, DownloadIcon } from './primitives'
+import { newTab } from '@/lib/links'
+import { ArrowUpRight } from './primitives'
 
 const rise = (delay: number) => ({
   initial: { opacity: 0, y: 16 },
@@ -63,15 +65,15 @@ export function Hero() {
               Available for new opportunities
             </span>
             <div className="flex flex-wrap gap-x-5 text-sm">
-              <a href={profile.github.href} className="flex min-h-11 items-center gap-1.5 text-muted-fg hover:text-fg">
+              <a href={profile.github.href} {...newTab} className="flex min-h-11 items-center gap-1.5 text-muted-fg hover:text-fg">
                 GitHub
                 <ArrowUpRight />
               </a>
-              <a href={profile.linkedin.href} className="flex min-h-11 items-center gap-1.5 text-muted-fg hover:text-fg">
+              <a href={profile.linkedin.href} {...newTab} className="flex min-h-11 items-center gap-1.5 text-muted-fg hover:text-fg">
                 LinkedIn
                 <ArrowUpRight />
               </a>
-              <a href={profile.leetcode.href} className="flex min-h-11 items-center gap-1.5 text-muted-fg hover:text-fg">
+              <a href={profile.leetcode.href} {...newTab} className="flex min-h-11 items-center gap-1.5 text-muted-fg hover:text-fg">
                 LeetCode
                 <ArrowUpRight />
               </a>
@@ -80,20 +82,21 @@ export function Hero() {
           <m.div {...rise(0.32)} className="flex flex-col gap-6 md:items-end md:text-right">
             <p className="m-0 max-w-[26em] text-[17px] leading-relaxed text-pretty text-muted-fg">{profile.intro}</p>
             <div className="flex flex-wrap gap-3 md:justify-end">
-              <a
+              <RippleLink
                 href="#contact"
-                className="flex min-h-12 items-center gap-2.5 rounded-full bg-ink px-6 text-[15px] font-medium text-on-ink transition-transform hover:-translate-y-px"
+                rippleColor="var(--on-ink)"
+                className="min-h-12 gap-2.5 rounded-full bg-ink px-6 text-[15px] font-medium text-on-ink transition-transform hover:-translate-y-px"
               >
                 Get in touch
                 <ArrowUpRight className="size-4" />
-              </a>
+              </RippleLink>
               <a
                 href={profile.resume}
-                download
+                {...newTab}
                 className="flex min-h-12 items-center gap-2.5 rounded-full border border-line-strong bg-surface/70 px-6 text-[15px] font-medium text-fg backdrop-blur-sm transition-colors hover:border-faint"
               >
-                <DownloadIcon />
                 Resume
+                <ArrowUpRight className="size-4" />
               </a>
             </div>
           </m.div>

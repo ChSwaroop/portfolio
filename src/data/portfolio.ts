@@ -6,7 +6,6 @@ export interface Link {
   label: string
   value: string
   href: string
-  download?: boolean
 }
 
 export interface Role {
@@ -214,5 +213,5 @@ export const contactLinks: Link[] = [
   { label: 'GitHub', value: profile.github.handle, href: profile.github.href },
   { label: 'LinkedIn', value: profile.linkedin.handle, href: profile.linkedin.href },
   { label: 'LeetCode', value: profile.leetcode.handle, href: profile.leetcode.href },
-  { label: 'Resume', value: 'Download PDF', href: profile.resume, download: true },
+  { label: 'Resume', value: 'View PDF', href: profile.resume },
 ]
