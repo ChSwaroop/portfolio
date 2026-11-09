@@ -56,15 +56,15 @@ export interface Stat {
 export const profile = {
   name: 'Chitturi Swaroop',
   role: 'Software Engineer 1',
-  company: 'Deeptha.ai',
-  location: 'India',
+  company: 'Deeptaai',
+  location: 'Andhra Pradesh, India',
   firstName: 'Swaroop',
   title: 'Full stack Developer',
   about:
     'I build fast, data-heavy products: React and TypeScript on the surface, Go services underneath, and LLM features where they earn their latency.',
   aboutHighlight: 'LLM features where they earn their latency.',
   intro:
-    'Full-stack engineer working across React and TypeScript frontends, the Go microservices behind them, and LLM features (RAG, AI agents) where they actually help. 2+ years shipping analytics platforms in production.',
+    'Full stack developer working across React and TypeScript frontends, the Go services behind them, and LLM features (RAG, AI agents) where they actually help. 2+ years shipping multi-tenant and analytics platforms in production.',
   email: 'swaroopch1234@gmail.com',
   resume: '/assets/resume.pdf',
   github: { handle: 'ChSwaroop', href: 'https://github.com/ChSwaroop' },
@@ -93,19 +93,20 @@ export const stats: Stat[] = [
 /** Newest first. */
 export const experience: Role[] = [
   {
-    company: 'Deeptha.ai',
-    short: 'SDE I',
-    role: 'Software Development Engineer I',
+    company: 'Deeptaai',
+    short: 'SE I',
+    role: 'Software Engineer I',
     start: '2025-08',
     end: null,
     summary:
-      'Full-stack on Klaritics, an analytics platform: React and TypeScript on the frontend, Go services behind it.',
+      'Full stack features end to end for a multi-tenant application management platform and a large-scale analytics platform, from React and TypeScript to Go services.',
     highlights: [
-      'Built Restricted Mode for shared dashboards and charts: the permission matrix in the UI and the Go backend changes behind it.',
-      'Building a standalone Event exporter service downstream of the events pipeline, for self-hosted deployments.',
-      'Manage complex dashboard state and tune rendering performance for dynamic, data-dense views.',
+      'Role-based access control with custom roles and per-module permissions, plus per-tenant configuration and fee management.',
+      'A React SDK for a no-code form builder: multi-stage forms with document uploads and an embedded payment step.',
+      'Go REST APIs and dashboards for payment renewal and referral incentive workflows.',
+      'Customer-facing analytics dashboards over large event datasets, kept fast with memoization and virtualization.',
     ],
-    tags: ['React', 'TypeScript', 'Go', 'PostgreSQL', 'Kubernetes'],
+    tags: ['React', 'TypeScript', 'Go', 'RBAC', 'Microservices'],
   },
   {
     company: 'Apxor',
@@ -113,25 +114,29 @@ export const experience: Role[] = [
     role: 'Associate Software Development Engineer',
     start: '2024-10',
     end: '2025-07',
-    summary: 'Full-stack features for Apxor’s product analytics and engagement platform for mobile apps.',
+    summary:
+      'Full stack features in React and Go for product analytics customers, a Flutter app for a community Q&A platform, and early LLM prototypes.',
     highlights: [
-      'Developed full-stack features with React and Go for scalable, interactive web applications.',
-      'Explored LLMs and AI-driven tooling, and integrated them into product features.',
+      'Engineered full stack features across React and Go for customer-facing product analytics apps.',
+      'Built reusable UI components and REST integrations that sped up delivery across product modules.',
+      'Built the Flutter app and parts of the Go backend for a community Q&A platform on education and careers.',
+      'Prototyped OpenAI and Gemini integrations, prompt engineering and RAG patterns for the team.',
     ],
-    tags: ['React', 'Go', 'LLMs'],
+    tags: ['React', 'Go', 'Flutter', 'LLMs'],
   },
   {
     company: 'Workbees',
     short: 'Mobile Intern',
-    role: 'Flutter Developer Intern',
+    role: 'Software Engineering Intern (Mobile)',
     start: '2024-04',
     end: '2024-09',
-    summary: 'Built Flutter apps end to end at Workbees Technologies: UI, features and backend integration.',
+    summary:
+      'Shipped cross-platform mobile features in Flutter at Workbees Technologies, from UI to backend REST services and authentication.',
     highlights: [
-      'Shipped mobile app features in Flutter, from UI design to wiring up backend services.',
-      'Worked with senior developers and designers to scope requirements and fix issues.',
+      'Shipped cross-platform features in Flutter and Dart, including UI and integration with REST services and auth.',
+      'Turned loosely defined requirements into working features with senior engineers and designers.',
     ],
-    tags: ['Flutter', 'Dart', 'Firebase'],
+    tags: ['Flutter', 'Dart', 'REST APIs'],
   },
 ]
 
@@ -140,25 +145,33 @@ export const stackLayers: StackLayer[] = [
     id: 'L1',
     name: 'Interface',
     note: 'What people touch',
-    items: [{ name: 'TypeScript', core: true }, { name: 'React', core: true }, { name: 'Next.js' }],
+    items: [
+      { name: 'TypeScript', core: true },
+      { name: 'React', core: true },
+      { name: 'Next.js' },
+      { name: 'TanStack Query' },
+      { name: 'Zustand' },
+      { name: 'Tailwind CSS' },
+      { name: 'Flutter',core: true },
+    ],
   },
   {
     id: 'L2',
     name: 'Services',
     note: 'APIs and the work behind them',
-    items: [{ name: 'Go', core: true }, { name: 'gRPC' }, { name: 'Node.js' }, { name: 'Java' }],
+    items: [{ name: 'Go', core: true }, { name: 'gRPC' }, { name: 'Node.js' }, { name: 'Express' }, { name: 'Java', core: true }],
   },
   {
     id: 'L3',
     name: 'Data',
     note: 'Storage, caching, queries',
-    items: [{ name: 'PostgreSQL' }, { name: 'Redis' }, { name: 'MongoDB' }],
+    items: [{ name: 'PostgreSQL', core: true }, { name: 'Redis' }, { name: 'MongoDB' }, { name: 'MySQL' }, { name: 'Supabase' }, { name: 'Firebase' }],
   },
   {
     id: 'L4',
     name: 'Platform',
     note: 'How it ships and runs',
-    items: [{ name: 'Docker' }, { name: 'Kubernetes' }],
+    items: [{ name: 'Docker' }, { name: 'Kubernetes', core: true }, { name: 'Grafana Tanka' }, { name: 'Git' }],
   },
   {
     id: 'L5',
@@ -174,16 +187,17 @@ export const projects: Project[] = [
     kind: 'Web',
     name: 'Trello Clone',
     summary:
-      'Kanban project management with boards, lists and cards, drag-and-drop reordering, labels, due dates, checklists and activity tracking. REST APIs on Node and PostgreSQL, files on Supabase Storage.',
-    stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Supabase'],
-    href: 'https://github.com/ChSwaroop',
+      'Kanban project management with boards, lists and cards, drag-and-drop reordering, labels, due dates, checklists, comments and activity tracking. A Node and Express REST service on PostgreSQL, with attachments on Supabase Storage.',
+    stack: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Supabase'],
+    href: 'https://trello-clone-scaler-demo.vercel.app',
   },
   {
     id: 'P-02',
     kind: 'Mobile',
     name: 'Skill Share Hub',
-    summary: 'A place to trade skills with other people, with real-time chat and voice calls built in.',
-    stack: ['Flutter', 'Node.js', 'MongoDB', 'Firebase'],
+    summary:
+      'Skill-sharing and mentorship app: find peers by shared skills, connect with them, then chat or voice call in real time. An in-app chatbot helps people get started.',
+    stack: ['Flutter', 'Node.js', 'Express', 'MongoDB', 'Firebase'],
     href: 'https://github.com/ChSwaroop',
   },
   {
@@ -191,7 +205,7 @@ export const projects: Project[] = [
     kind: 'Mobile',
     name: 'Aditya App',
     summary:
-      'Campus app for Aditya Engineering College with sign-in and a review system, so students can submit and manage feedback.',
+      'Campus app for Aditya college: courses across programs, placement statistics and campus information, with sign-in and in-app reviews from students.',
     stack: ['Flutter', 'Dart', 'Firebase'],
     href: 'https://github.com/ChSwaroop',
   },
@@ -206,7 +220,7 @@ export const achievements: Achievement[] = [
 
 export const education: Education[] = [
   { degree: 'B.Tech, Computer Science & Engineering', school: 'Aditya Engineering College' },
-  { degree: 'Diploma, Computer Engineering', school: 'Aditya Engineering College' },
+  { degree: 'Diploma, Computer Engineering', school: 'Aditya Polytechnic College' },
 ]
 
 export const contactLinks: Link[] = [

@@ -5,7 +5,10 @@ import { profile, stackLayers, stats } from '@/data/portfolio'
 import { Eyebrow, Reveal } from './primitives'
 
 const core = stackLayers.flatMap((l) => l.items.filter((i) => i.core).map((i) => ({ name: i.name, layer: l.name })))
-const others = stackLayers.flatMap((l) => l.items.filter((i) => !i.core).map((i) => ({ name: i.name, layer: l.name })))
+const rest = stackLayers.map((l) => l.items.filter((i) => !i.core).map((i) => ({ name: i.name, layer: l.name })))
+// Round-robin across layers so the floating chips cover the whole stack, not just the first layer.
+const others = Array.from({ length: Math.max(...rest.map((r) => r.length)) }, (_, k) => rest.flatMap((r) => r[k] ?? []))
+  .flat()
 const chips = [...core, ...others].slice(0, 8)
 
 // Where each chip floats around the paragraph on wide screens: [side, top %, tilt].

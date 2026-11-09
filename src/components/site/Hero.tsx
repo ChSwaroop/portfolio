@@ -66,8 +66,8 @@ function TypedTitle() {
           <span className="relative inline-block">
             <span className="invisible">{word}</span>
             <TypingAnimation
-              delay={650}
-              duration={65}
+              delay={250}
+              // duration={120}
               className="absolute top-0 left-0 leading-[inherit] tracking-[inherit] whitespace-nowrap"
             >
               {word}
