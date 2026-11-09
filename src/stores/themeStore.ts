@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-// It manages the theme state using Zustand and persists it in local storage.
+// Manages the theme with Zustand and persists it to localStorage under "theme".
+// Light is the default; "system" follows prefers-color-scheme.
 export type Theme = "light" | "dark" | "system";
 
 export interface ThemeStore {
@@ -12,7 +13,7 @@ export interface ThemeStore {
 export const useThemeStore = create<ThemeStore>()(
   persist(
     (set) => ({
-      theme: "system",
+      theme: "light",
       setTheme: (theme) => set({ theme }),
     }),
     {
@@ -21,3 +22,8 @@ export const useThemeStore = create<ThemeStore>()(
     }
   )
 );
+
+export function resolveTheme(theme: Theme): "light" | "dark" {
+  if (theme !== "system") return theme;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}

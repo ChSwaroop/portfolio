@@ -1,48 +1,56 @@
-import { useThemeStore } from '@/stores/themeStore';
+import { resolveTheme, useThemeStore } from '@/stores/themeStore'
 import { createRootRoute, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-import { useEffect } from 'react';
+import { domAnimation, LazyMotion, MotionConfig } from 'motion/react'
+import { lazy, Suspense, useEffect } from 'react'
+import '@fontsource-variable/geist'
+import '@fontsource-variable/geist-mono'
+import '@fontsource/instrument-serif/400.css'
+import '@fontsource/instrument-serif/400-italic.css'
 import '../index.css'
-import Header from '@/components/Header';
+
+const Devtools = import.meta.env.DEV
+    ? lazy(() => import('@tanstack/react-router-devtools').then((m) => ({ default: m.TanStackRouterDevtools })))
+    : () => null
 
 const RootComponent = () => {
-    //theme settings
-    const { theme } = useThemeStore();
+    const { theme } = useThemeStore()
 
     useEffect(() => {
-        const root = document.documentElement
-        root.classList.remove('light', 'dark')
-        console.log('root.classList', root.classList)
-
-        if (theme === 'system') {
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-            root.classList.add(prefersDark ? 'dark' : 'light')
-        } else {
-            root.classList.add(theme)
+        const apply = () => {
+            const root = document.documentElement
+            const resolved = resolveTheme(theme)
+            root.classList.remove('light', 'dark')
+            root.classList.add(resolved)
+            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', resolved === 'dark' ? '#0d0f0b' : '#eef0ee')
         }
+        apply()
+        if (theme !== 'system') return
+        const mq = window.matchMedia('(prefers-color-scheme: dark)')
+        mq.addEventListener('change', apply)
+        return () => mq.removeEventListener('change', apply)
     }, [theme])
 
     return (
-        <>
-            <Header />
-            <hr />
+        <MotionConfig reducedMotion="user">
+          <LazyMotion features={domAnimation} strict>
             <Outlet />
-            <TanStackRouterDevtools />
-        </>
+            <Suspense fallback={null}>
+                <Devtools />
+            </Suspense>
+          </LazyMotion>
+        </MotionConfig>
     )
 }
 
 export const Route = createRootRoute({
-
     component: RootComponent,
     notFoundComponent: () => (
-        <div className="p-4 text-red-500">
-            <h1 className="text-2xl">404 - Not Found</h1>
-            <p>The page you are looking for does not exist.</p>
-        </div>
+        <main className="grid min-h-screen place-items-center bg-bg p-6 text-fg">
+            <div className="flex flex-col items-center gap-3 text-center">
+                <span className="font-mono text-sm text-signal">404</span>
+                <h1 className="text-2xl font-semibold">This page doesn’t exist.</h1>
+                <a href="/" className="font-mono text-sm text-muted-fg underline underline-offset-4 hover:text-fg">Back home</a>
+            </div>
+        </main>
     ),
 })
-
-
-
-
