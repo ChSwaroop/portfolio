@@ -1,98 +1,81 @@
-import { nav, profile } from '@/data/portfolio'
-import { useNow } from '@/hooks/use-ticker'
+import { Briefcase, FolderGit2, House, Mail, Moon, Sun, UserRound, type LucideIcon } from 'lucide-react'
+import { m } from 'motion/react'
+import { nav, profile, type NavId } from '@/data/portfolio'
+import { useActiveSection } from '@/hooks/use-active-section'
 import { resolveTheme, useThemeStore } from '@/stores/themeStore'
-import { DownloadIcon } from './primitives'
 
-const clockFormat = new Intl.DateTimeFormat('en-GB', {
-  timeZone: profile.timeZone,
-  hour: '2-digit',
-  minute: '2-digit',
-  second: '2-digit',
-  hour12: false,
-})
-
-function Clock() {
-  const now = useNow()
-  return (
-    <span className="hidden items-center gap-2 pr-2 font-mono text-xs text-faint tabular-nums lg:flex">
-      <span aria-hidden="true" className="size-1.5 animate-breathe rounded-full bg-signal" />
-      <span>
-        <span className="sr-only">Local time in India: </span>
-        {profile.timeZoneLabel} <time>{clockFormat.format(now)}</time>
-      </span>
-    </span>
-  )
+const icons: Record<NavId, LucideIcon> = {
+  top: House,
+  about: UserRound,
+  work: Briefcase,
+  projects: FolderGit2,
+  contact: Mail,
 }
+
+const ids = nav.map((item) => item.id)
 
 function ThemeToggle() {
   const { theme, setTheme } = useThemeStore()
   const isDark = resolveTheme(theme) === 'dark'
+  const Icon = isDark ? Sun : Moon
   return (
     <button
       type="button"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-      className="grid size-11 place-items-center rounded-lg border border-line text-muted-fg transition-colors hover:border-line-strong hover:text-fg"
+      className="grid size-11 place-items-center rounded-full border border-line bg-surface/70 text-muted-fg backdrop-blur-md transition-colors hover:border-line-strong hover:text-fg"
     >
-      {isDark ? (
-        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-        </svg>
-      ) : (
-        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
-        </svg>
-      )}
+      <Icon aria-hidden="true" className="size-[18px]" strokeWidth={1.75} />
     </button>
   )
 }
 
-function NavLinks({ className }: { className?: string }) {
+/** Dark pill of section links; the white pill slides to the section in view. */
+function SectionPills() {
+  const active = useActiveSection(ids)
   return (
-    <ul className={className}>
-      {nav.map((item) => (
-        <li key={item.id}>
-          <a
-            href={`#${item.id}`}
-            className="flex min-h-11 items-center gap-2 whitespace-nowrap rounded-md px-3 font-mono text-[13px] text-muted-fg transition-colors hover:bg-raised hover:text-fg"
-          >
-            <span className="text-faint">{item.n}</span>
-            {item.label}
-          </a>
-        </li>
-      ))}
+    <ul className="m-0 flex list-none items-center gap-0.5 rounded-full bg-pill p-1.5 shadow-[0_12px_32px_-12px_var(--shadow)]">
+      {nav.map((item) => {
+        const Icon = icons[item.id]
+        const on = item.id === active
+        return (
+          <li key={item.id}>
+            <a
+              href={`#${item.id}`}
+              aria-current={on ? 'location' : undefined}
+              className={`relative flex min-h-11 items-center gap-2 rounded-full px-3 text-[15px] whitespace-nowrap transition-colors sm:px-4 ${
+                on ? 'text-pill-active-fg' : 'text-pill-fg/85 hover:text-pill-fg'
+              }`}
+            >
+              {on && (
+                <m.span
+                  layoutId="nav-pill"
+                  aria-hidden="true"
+                  className="absolute inset-0 rounded-full bg-pill-active"
+                  transition={{ type: 'spring', stiffness: 420, damping: 36 }}
+                />
+              )}
+              <Icon aria-hidden="true" className={`relative size-[18px] ${on ? '' : 'sm:hidden'}`} strokeWidth={1.75} />
+              <span className={`relative ${on ? '' : 'sr-only sm:not-sr-only'}`}>{item.label}</span>
+            </a>
+          </li>
+        )
+      })}
     </ul>
   )
 }
 
 export function Nav() {
   return (
-    <header className="sticky top-0 z-30 border-b border-line bg-nav backdrop-blur-md">
-      <nav aria-label="Primary" className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
-        <div className="flex items-center gap-4 py-2.5 md:gap-6">
-          <a href="#top" className="flex min-h-11 items-center gap-3 text-fg">
-            <span aria-hidden="true" className="relative grid size-8 place-items-center rounded-md border border-line-strong font-mono text-xs font-semibold">
-              {profile.initials}
-              <span className="absolute -right-[3px] -bottom-[3px] size-[7px] rounded-[2px] bg-signal" />
-            </span>
-            <span className="text-[15px] font-semibold tracking-[-0.01em]">{profile.name}</span>
-          </a>
-          <NavLinks className="hidden flex-1 justify-center gap-0.5 md:flex" />
-          <div className="ml-auto flex items-center gap-2">
-            <Clock />
-            <ThemeToggle />
-            <a
-              href={profile.resume}
-              download
-              className="flex min-h-11 items-center gap-2 rounded-lg bg-fg px-4 text-sm font-medium text-bg transition-opacity hover:opacity-90"
-            >
-              <DownloadIcon />
-              Resume
-            </a>
-          </div>
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-30 bg-linear-to-b from-bg via-bg/90 to-transparent pb-6">
+      <nav aria-label="Sections" className="pointer-events-auto mx-auto flex max-w-[1200px] items-center justify-center gap-3 px-4 pt-4 sm:px-8 md:justify-between lg:px-10">
+        <a href="#top" className="hidden min-h-11 min-w-40 items-center font-serif text-2xl text-fg italic md:flex">
+          {profile.name}
+        </a>
+        <SectionPills />
+        <div className="flex min-w-40 justify-end max-md:min-w-0">
+          <ThemeToggle />
         </div>
-        <NavLinks className="-mx-2 flex gap-0.5 overflow-x-auto border-t border-line py-1 md:hidden" />
       </nav>
     </header>
   )

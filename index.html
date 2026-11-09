@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en" class="light">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/assets/images/code.png" />
@@ -9,15 +9,15 @@
       name="description"
       content="Chitturi Swaroop, full-stack Software Development Engineer at Deeptha.ai. React and TypeScript frontends, Go microservices, and LLM features (RAG, AI agents) for fast, data-heavy products."
     />
-    <meta name="theme-color" content="#0a0b0d" />
+    <meta name="theme-color" content="#eef0ee" />
     <meta property="og:title" content="Chitturi Swaroop — Full-stack Software Engineer" />
     <meta property="og:description" content="React/TypeScript frontends, Go microservices, and LLM features for fast, data-heavy products." />
     <meta property="og:type" content="website" />
     <script>
-      // Apply the saved theme before first paint (dark by default) to avoid a flash.
+      // Apply the saved theme before first paint (light by default) to avoid a flash.
       try {
         var saved = JSON.parse(localStorage.getItem('theme') || '{}').state;
-        var t = (saved && saved.theme) || 'dark';
+        var t = (saved && saved.theme) || 'light';
         if (t === 'system') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         document.documentElement.className = t;
       } catch (e) {}

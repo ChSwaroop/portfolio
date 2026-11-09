@@ -1,58 +1,85 @@
-import { profile, projects } from '@/data/portfolio'
+import { profile, projects, type Project } from '@/data/portfolio'
 import { ArrowUpRight, Reveal, Section } from './primitives'
+
+/** A stylised app window standing in for a screenshot. */
+function Preview({ p }: { p: Project }) {
+  return (
+    <div aria-hidden="true" className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-raised">
+      <div className="absolute -right-10 -bottom-16 size-56 rounded-full bg-lime/50 blur-3xl transition-transform duration-500 group-hover:scale-125" />
+      <div
+        className={`absolute top-8 left-8 flex flex-col overflow-hidden rounded-xl border border-line bg-surface shadow-[0_24px_48px_-24px_var(--shadow)] transition-transform duration-500 group-hover:-translate-y-1 ${
+          p.kind === 'Mobile' ? 'bottom-0 w-36 rounded-b-none' : '-right-6 -bottom-6'
+        }`}
+      >
+        <div className="flex items-center gap-1.5 border-b border-line px-3 py-2.5">
+          <span className="size-2 rounded-full bg-line-strong" />
+          <span className="size-2 rounded-full bg-line-strong" />
+          <span className="size-2 rounded-full bg-lime-strong" />
+        </div>
+        <div className="flex flex-col gap-2 p-4">
+          <span className="font-serif text-2xl leading-tight italic">{p.name}</span>
+          <span className="h-2 w-3/4 rounded-full bg-raised" />
+          <span className="h-2 w-1/2 rounded-full bg-raised" />
+          <div className="mt-2 grid grid-cols-3 gap-2">
+            <span className="h-10 rounded-lg bg-lime/60" />
+            <span className="h-10 rounded-lg bg-raised" />
+            <span className="h-10 rounded-lg bg-raised" />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export function Projects() {
   return (
-    <Section
-      id="projects"
-      index="03"
-      title="Projects"
-      meta={
-        <a href={profile.github.href} className="flex min-h-11 items-center gap-1.5 text-muted-fg hover:text-fg">
-          All repos on GitHub
-          <ArrowUpRight />
-        </a>
-      }
-    >
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <Section id="projects" eyebrow="/ Things I’ve built" title="Selected works">
+      <ul className="m-0 grid list-none grid-cols-1 gap-x-6 gap-y-10 p-0 md:grid-cols-2">
         {projects.map((p, i) => (
-          <Reveal key={p.id} delay={i * 0.06} className="flex">
-            <article className="group flex min-w-0 flex-1 flex-col overflow-hidden rounded-xl border border-line bg-surface transition-colors hover:border-line-strong">
-              <div aria-hidden="true" className="hatch relative flex aspect-[16/10] flex-col justify-between border-b border-line bg-raised p-5 font-mono">
-                <span className="text-xs text-faint">
-                  ~/{p.name.toLowerCase().replace(/\s+/g, '-')}
-                </span>
-                <span className="text-[13px] leading-relaxed text-muted-fg">
-                  {p.stack.slice(0, 3).join(' · ').toLowerCase()}
-                </span>
-                <span className="absolute right-5 bottom-5 size-2 rounded-[2px] bg-signal transition-transform duration-300 group-hover:scale-150" />
-              </div>
-              <div className="flex flex-auto flex-col gap-3 px-[22px] pt-[22px]">
-                <div className="flex items-center justify-between gap-2 font-mono text-xs">
-                  <span className="text-faint">{p.id}</span>
-                  <span className="rounded border border-line px-2 py-[3px] text-muted-fg">{p.kind}</span>
-                </div>
-                <h3 className="m-0 text-[21px] font-semibold tracking-[-0.02em]">{p.name}</h3>
-                <p className="m-0 text-[15px] leading-relaxed text-pretty text-muted-fg">{p.summary}</p>
-                <div className="mt-auto flex flex-wrap gap-1.5 pt-1.5">
-                  {p.stack.map((t) => (
-                    <span key={t} className="rounded bg-raised px-2 py-1 font-mono text-xs text-muted-fg">
-                      {t}
+          <li key={p.id} className="flex">
+            <Reveal delay={(i % 2) * 0.06} className="flex flex-1">
+              <article className="group relative flex flex-1 flex-col gap-4 rounded-3xl border border-line bg-surface p-3 pb-6">
+                <Preview p={p} />
+                <div className="flex flex-col gap-2 px-3">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <h3 className="m-0 text-xl font-medium tracking-[-0.02em]">
+                      <a href={p.href} className="after:absolute after:inset-0 after:rounded-3xl">
+                        {p.name}
+                      </a>
+                    </h3>
+                    <span className="flex items-center gap-1.5 text-sm text-muted-fg group-hover:text-fg">
+                      {p.kind}
+                      <ArrowUpRight className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
-                  ))}
+                  </div>
+                  <p className="m-0 text-[15px] leading-relaxed text-pretty text-muted-fg">{p.summary}</p>
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {p.stack.map((t) => (
+                      <span key={t} className="rounded-full bg-raised px-3 py-1 text-xs text-muted-fg">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <a
-                href={p.href}
-                className="mt-[18px] flex min-h-[52px] items-center justify-between border-t border-line px-[22px] text-sm font-medium text-fg transition-colors hover:bg-raised"
-              >
-                View source<span className="sr-only"> for {p.name}</span>
-                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </article>
-          </Reveal>
+              </article>
+            </Reveal>
+          </li>
         ))}
-      </div>
+        <li className="flex">
+          <Reveal delay={0.06} className="flex flex-1">
+            <a
+              href={profile.github.href}
+              className="group flex min-h-72 flex-1 flex-col items-center justify-center gap-4 rounded-3xl border border-dashed border-line-strong p-8 text-center transition-colors hover:border-faint hover:bg-surface"
+            >
+              <span className="grid size-14 place-items-center rounded-full bg-ink text-on-ink transition-transform group-hover:-translate-y-1">
+                <ArrowUpRight className="size-5" />
+              </span>
+              <span className="font-serif text-3xl italic">More on GitHub</span>
+              <span className="text-sm text-muted-fg">github.com/{profile.github.handle}</span>
+            </a>
+          </Reveal>
+        </li>
+      </ul>
     </Section>
   )
 }

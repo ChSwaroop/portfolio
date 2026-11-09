@@ -35,30 +35,32 @@ export function Reveal({ children, className, delay = 0 }: { children: ReactNode
   )
 }
 
+/** Small italic serif label above a section title, as in the reference design. */
+export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
+  return <p className={cn('m-0 font-serif text-lg text-muted-fg italic', className)}>{children}</p>
+}
+
 export function Section({
   id,
-  index,
+  eyebrow,
   title,
-  meta,
   children,
+  className,
 }: {
   id: string
-  index: string
+  eyebrow: string
   title: string
-  meta?: ReactNode
   children: ReactNode
+  className?: string
 }) {
   const headingId = `${id}-title`
   return (
-    <section id={id} aria-labelledby={headingId} className="mx-auto max-w-[1200px] px-5 pt-16 sm:px-8 md:pt-24 lg:px-10 lg:pt-28">
-      <Reveal>
-        <div className="mb-8 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-b border-line pb-4">
-          <h2 id={headingId} className="flex items-baseline gap-3.5 text-[26px] font-semibold tracking-[-0.025em] md:text-[32px]">
-            <span className="font-mono text-[13px] font-medium text-signal">{index}</span>
-            {title}
-          </h2>
-          {meta ? <div className="font-mono text-xs text-faint">{meta}</div> : null}
-        </div>
+    <section id={id} aria-labelledby={headingId} className={cn('mx-auto max-w-[1200px] px-5 pt-24 sm:px-8 md:pt-32 lg:px-10', className)}>
+      <Reveal className="mb-12 flex flex-col items-center gap-2 text-center md:mb-16">
+        <Eyebrow>{eyebrow}</Eyebrow>
+        <h2 id={headingId} className="m-0 text-[clamp(34px,5vw,52px)] leading-[1.05] font-medium tracking-[-0.035em]">
+          {title}
+        </h2>
       </Reveal>
       {children}
     </section>
@@ -67,6 +69,6 @@ export function Section({
 
 export function Tag({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <span className={cn('rounded border border-line px-2 py-1 font-mono text-xs text-muted-fg', className)}>{children}</span>
+    <span className={cn('rounded-full border border-line bg-surface px-3 py-1 text-xs text-muted-fg', className)}>{children}</span>
   )
 }

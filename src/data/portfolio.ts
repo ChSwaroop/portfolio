@@ -22,16 +22,6 @@ export interface Role {
   tags: string[]
 }
 
-export interface TraceSpan {
-  name: string
-  layer: string
-  /** Offset and width as a fraction of the trace (0–1) */
-  offset: number
-  width: number
-  depth: number
-  highlight?: boolean
-}
-
 export interface StackLayer {
   id: string
   name: string
@@ -66,14 +56,14 @@ export interface Stat {
 
 export const profile = {
   name: 'Chitturi Swaroop',
-  initials: 'CS',
   role: 'Software Development Engineer I',
   company: 'Deeptha.ai',
   location: 'India',
-  timeZone: 'Asia/Kolkata',
-  timeZoneLabel: 'IST',
-  headlinePrefix: 'I build software that’s',
-  headlineWords: ['data-heavy.', 'real-time.', 'LLM-powered.', 'fast.'],
+  firstName: 'Swaroop',
+  title: 'Full-stack Engineer',
+  about:
+    'I build fast, data-heavy products: React and TypeScript on the surface, Go services underneath, and LLM features where they earn their latency.',
+  aboutHighlight: 'LLM features where they earn their latency.',
   intro:
     'Full-stack engineer working across React and TypeScript frontends, the Go microservices behind them, and LLM features (RAG, AI agents) where they actually help. 2+ years shipping analytics platforms in production.',
   email: 'swaroopch1234@gmail.com',
@@ -83,28 +73,22 @@ export const profile = {
   leetcode: { handle: 'Swaroop_18', href: 'https://leetcode.com/u/Swaroop_18/' },
 } as const
 
+/** Header links, in page order. `top` is the hero. */
 export const nav = [
-  { id: 'work', n: '01', label: 'Work' },
-  { id: 'stack', n: '02', label: 'Stack' },
-  { id: 'projects', n: '03', label: 'Projects' },
-  { id: 'record', n: '04', label: 'Record' },
-  { id: 'contact', n: '05', label: 'Contact' },
+  { id: 'top', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'work', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'contact', label: 'Contact' },
 ] as const
+
+export type NavId = (typeof nav)[number]['id']
 
 export const stats: Stat[] = [
   { value: '2+ yrs', label: 'In production' },
   { value: '3', label: 'Engineering teams' },
   { value: '#6', label: 'AP-ECET 2022 rank' },
   { value: '5★', label: 'HackerRank' },
-]
-
-export const trace: TraceSpan[] = [
-  { name: 'web.render', layer: 'React · TS', offset: 0, width: 1, depth: 0 },
-  { name: 'api.request', layer: 'Go', offset: 0.07, width: 0.86, depth: 1 },
-  { name: 'rpc.call', layer: 'gRPC', offset: 0.12, width: 0.3, depth: 2 },
-  { name: 'db.query', layer: 'PostgreSQL', offset: 0.16, width: 0.18, depth: 3 },
-  { name: 'cache.get', layer: 'Redis', offset: 0.45, width: 0.07, depth: 2 },
-  { name: 'llm.retrieve', layer: 'RAG · agents', offset: 0.54, width: 0.34, depth: 2, highlight: true },
 ]
 
 /** Newest first. */

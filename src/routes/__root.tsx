@@ -4,6 +4,8 @@ import { domAnimation, LazyMotion, MotionConfig } from 'motion/react'
 import { lazy, Suspense, useEffect } from 'react'
 import '@fontsource-variable/geist'
 import '@fontsource-variable/geist-mono'
+import '@fontsource/instrument-serif/400.css'
+import '@fontsource/instrument-serif/400-italic.css'
 import '../index.css'
 
 const Devtools = import.meta.env.DEV
@@ -19,7 +21,7 @@ const RootComponent = () => {
             const resolved = resolveTheme(theme)
             root.classList.remove('light', 'dark')
             root.classList.add(resolved)
-            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', resolved === 'dark' ? '#0a0b0d' : '#f6f6f4')
+            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', resolved === 'dark' ? '#0d0f0b' : '#eef0ee')
         }
         apply()
         if (theme !== 'system') return
