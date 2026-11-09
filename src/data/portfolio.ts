@@ -55,11 +55,11 @@ export interface Stat {
 
 export const profile = {
   name: 'Chitturi Swaroop',
-  role: 'Software Development Engineer I',
+  role: 'Software Engineer 1',
   company: 'Deeptha.ai',
   location: 'India',
   firstName: 'Swaroop',
-  title: 'Full-stack Engineer',
+  title: 'Full stack Developer',
   about:
     'I build fast, data-heavy products: React and TypeScript on the surface, Go services underneath, and LLM features where they earn their latency.',
   aboutHighlight: 'LLM features where they earn their latency.',
